@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: asdf
+      # MYSQL_DATABASE: test_db
+      # MYSQL_USER: root
+      # MYSQL_PASSWORD: asdf
+    volumes:
+      - /var/mysql/:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  web:
+    image: alankar1985/php7.2
+    container_name: php_web
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    # command: apt-get install -y php-gd
+    depends_on:
+      - mysql
+    volumes:
+      - /var/www/html/:/var/www/html/
+      # - /var/docker/stack/etc/:/etc/php/7.2/apache2/php.ini 
+    ports:
+      - "80:80"
+    links:
+      - mysql
+    stdin_open: true
+    tty: true
