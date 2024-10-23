@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Spinner from './Spinner';
 import { useLocation } from 'react-router-dom';
 
-const credentials = btoa('admin:Alankar@123#');
+const credentials = btoa('admin:Testpassword');
 const Posts = ({ setProgressBar, post_type = 'posts', setPostIDSinglePage }) => {
     const [posts, setPosts] = useState([]);
     const [page, setPage] = useState(1);
